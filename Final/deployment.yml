@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oles-test-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oles-test
+  template:
+    metadata:
+      labels:
+        app: oles-test
+    spec:
+      containers:
+        - name: app
+          image: olesia617/web-py:v0.0.6
+          ports:
+            - name: http 
+              containerPort: 8080
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"  
+      imagePullSecrets:
+        - name: docker-cred
