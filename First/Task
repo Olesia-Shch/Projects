@@ -1,1 +1,6 @@
-
+Use Vagrant to raise 2 virtual machines: VM1 and VM2
+In the same Vagrant, add the installation: MysqlServer, Prometheus mysql exporter, Prometheus node exporter on VM1. Install Grafana, Prometheus, Prometheus Alert manager on VM2
+Then manually configure the Prometheus mysql exporter to fetch data from the Mysql server. Add a bash script to the Vagrant configuration that would create a database in Mysql (Shop database).
+Configure Prometheus to collect metrics from Node exporter and Prometheus Mysql exporter. Ensure that the metrics appear on the Prometheus web interface
+Configure Prometheus alert manager and Prometheus to send an email to your inbox when the CPU usage on VM1 is more than 10%.
+Connect Grafana to Prometheus and add a dashboard to display a metric with CPU usage and any metrics from the Mysql server
