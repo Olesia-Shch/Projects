@@ -1,0 +1,11 @@
+groups:
+- name: alert.rules
+  rules:
+  - alert: CPUAlert
+    expr: 100 * avg(1 - rate(node_cpu_seconds_total{mode='idle'}[1m])) by (instance) > 10
+    for: 10s
+    labels:
+      severity: 'critical'
+    annotations:
+      summary: 'Hello alert appeared'
+      description: 'CPU > 10%'
